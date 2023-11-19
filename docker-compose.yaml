@@ -1,0 +1,46 @@
+version: "3.9"
+
+networks:
+    expendify-services:
+        driver: bridge
+
+volumes:
+    sql-server-data:
+        driver: local
+    sqldata:
+    sqllog:
+    sqlbackup:
+    usr-shared:
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: FinancialApplication/Dockerfile
+        container_name: expendify-app
+        networks:
+            - expendify-services
+        restart: always
+        ports:
+            - "7249:7249"
+        volumes:
+            - usr-shared:/usr/shared
+        depends_on:
+            - db
+    db:
+        image: mcr.microsoft.com/mssql/server:2019-CU3-ubuntu-18.04
+        container_name: sqlserver
+        networks:
+            - expendify-services
+        restart: always
+        environment:
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=expendify_app
+        ports:
+            - "1433:1433"
+        volumes:
+            - sql-server-data:/var/opt/mssql/
+            - sqldata:/var/opt/sqlserver/data
+            - sqllog:/var/opt/sqlserver/log
+            - sqlbackup:/var/opt/sqlserver/backup
+            - usr-shared:/usr/shared
