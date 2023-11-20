@@ -1,16 +1,16 @@
-name: Build and deploy .NET Core application to Web App faapi with API Management Service FinancialApplicationapi-FinancialApplication
+name: Build and deploy .NET Core application to Azure Services
 on:
   push:
     branches:
     - main
 env:
-  AZURE_WEBAPP_NAME: faapi
+  AZURE_WEBAPP_NAME: expendify
   AZURE_WEBAPP_PACKAGE_PATH: FinancialApplication/publish
   AZURE_APIM_RESOURCE_PATH: /
-  AZURE_APIM_RESOURCEGROUP: financialapplication
-  AZURE_APIM_SERVICENAME: FinancialApplicationapi
-  AZURE_APIM_API_ID: FinancialApplication
-  AZURE_APIM_APPSERVICEURL: https://faapi.azurewebsites.net
+  AZURE_APIM_RESOURCEGROUP: expendify
+  AZURE_APIM_SERVICENAME: expendify
+  AZURE_APIM_API_ID: expendify
+  AZURE_APIM_APPSERVICEURL: https://expendify.azurewebsites.net
   SWASHBUCLE_ASPNET_CORE_CLI_PACKAGE_VERSION: 7.0.x
   SWASHBUCKLE_DOTNET_CORE_VERSION: 7.0.x
   API_IMPORT_SPECIFICATION_PATH: FinancialApplication/publish/swagger.json
@@ -72,11 +72,4 @@ jobs:
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-        publish-profile: ${{ secrets.faapi_FFFF }}
-    - name: Azure Login
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.FinancialApplicationapi_SPN }}
-    - name: logout
-      run: >
-        az logout
+        publish-profile: ${{ secrets.EXPENDIFY_PUBLISH_PROFILE }}
