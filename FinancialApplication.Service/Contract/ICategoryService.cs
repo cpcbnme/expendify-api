@@ -7,7 +7,7 @@ public interface ICategoryService
     /// </summary>
     /// <param name="category"></param>
     /// <returns></returns>
-    Task Add(Category category);
+    Task Add(CategoryCreateDTO category);
     /// <summary>
     /// Delete Category
     /// </summary>

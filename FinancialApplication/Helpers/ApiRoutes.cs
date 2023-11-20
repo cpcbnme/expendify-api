@@ -22,6 +22,7 @@ public static class ApiRoutes
     public static class CategoryRoutes
     {
         public const string _getAllCategories = "";
+        public const string _createNewCategory = "";
     }
 
     public static class TransactionRoutes

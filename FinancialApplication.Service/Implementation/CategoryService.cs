@@ -14,8 +14,14 @@ public class CategoryService : ICategoryService
     /// </summary>
     /// <param name="category"></param>
     /// <returns></returns>
-    public async Task Add(Category category)
+    public async Task Add(CategoryCreateDTO model)
     {
+        var category = new Category()
+        {
+            Title = model.Title,
+            Description = model.Description,
+            Icon = model.Icon ?? "fa fa-question-circle",
+        };
         await _context.Categories.AddAsync(category);
         await _context.SaveChangesAsync();
     }

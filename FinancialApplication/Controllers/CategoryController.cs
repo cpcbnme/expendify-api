@@ -33,6 +33,45 @@ public class CategoryController : ControllerBase
         });
     }
 
+    [HttpPost(CategoryRoutes._createNewCategory)]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(typeof(ApiResponse<CategoryDTO>), StatusCodes.Status201Created)]
+    public async Task<IActionResult> CreateNewCategory(CategoryCreateDTO model)
+    {
+        if (model is null) return StatusCode(StatusCodes.Status400BadRequest, new ApiResponse<string>()
+        {
+            statusCode = StatusCodes.Status400BadRequest,
+            hasError = true,
+            message = "Request body cannot be empty",
+            data = null
+        });
+
+        if (string.IsNullOrWhiteSpace(model.Title)) return StatusCode(StatusCodes.Status400BadRequest, new ApiResponse<string>()
+        {
+            statusCode = StatusCodes.Status400BadRequest,
+            hasError = true,
+            message = "Title is required",
+            data = null
+        });
+
+        if(string.IsNullOrWhiteSpace(model.Description)) return StatusCode(StatusCodes.Status400BadRequest, new ApiResponse<string>()
+        {
+            statusCode = StatusCodes.Status400BadRequest,
+            hasError = true,
+            message = "Description is required",
+            data = null
+        });
+        await _repo.CategoryService.Add(model);
+        return StatusCode(StatusCodes.Status201Created, new ApiResponse<CategoryDTO>()
+        {
+            statusCode = StatusCodes.Status201Created,
+            hasError = false,
+            message = "Category created successfully",
+            data = null
+        });
+    }
+
     #region Helpers
     private async Task<ApplicationUser> GetUser()
     {
