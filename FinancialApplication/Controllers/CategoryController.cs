@@ -3,7 +3,7 @@
 [ApiVersion("1.0")]
 [Route("api/v{v:apiversion}/categories")]
 [ApiController]
-[Authorize]
+//[Authorize]
 public class CategoryController : ControllerBase
 {
     private readonly IRepositoryServiceManager _repo;
