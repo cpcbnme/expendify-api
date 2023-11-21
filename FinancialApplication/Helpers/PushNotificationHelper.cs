@@ -45,8 +45,8 @@ public class PushNotificationHelper : IPushNotificationHelper
         var messages = new PushTicketRequest()
         {
             PushTo = usersNotificationToken,
-            PushTitle = "Good morning 🫣",
-            PushBody = "Spent today? Log it now.",
+            PushTitle = "Buenos días 🫣",
+            PushBody = "Recuerda registrar tus gastos de hoy.",
             PushSound = "default",
         };
 
@@ -60,8 +60,8 @@ public class PushNotificationHelper : IPushNotificationHelper
         var messages = new PushTicketRequest()
         {
             PushTo = usersNotificationToken,
-            PushTitle = "Good afternoon 🫣",
-            PushBody = "Spent today? Log it now.",
+            PushTitle = "Buenas tardes 🫣",
+            PushBody = "La tarde ha llegado, ¿has registrado tus finanzas de hoy?",
             PushSound = "default",
         };
 
@@ -75,8 +75,8 @@ public class PushNotificationHelper : IPushNotificationHelper
         var messages = new PushTicketRequest()
         {
             PushTo = usersNotificationToken,
-            PushTitle = "Good afternoon 🫣",
-            PushBody = "Spent today? Log it now.",
+            PushTitle = "Buenas tardes 🫣",
+            PushBody = "¿Has registrado tus finanzas de hoy?",
             PushSound = "default",
         };
 
@@ -90,8 +90,8 @@ public class PushNotificationHelper : IPushNotificationHelper
         var messages = new PushTicketRequest()
         {
             PushTo = usersNotificationToken,
-            PushTitle = "Good evening 🫣",
-            PushBody = "Spent today? Log it now.",
+            PushTitle = "Buenas noches 🫣",
+            PushBody = "¿Has registrado tus finanzas de hoy?",
             PushSound = "default",
         };
 

@@ -1,5 +1,6 @@
 ﻿using System.Net.Mail;
 using System.Net;
+using Microsoft.AspNetCore.Http.Internal;
 
 public class SMTPDetails
 {
@@ -45,7 +46,7 @@ public class SMTPMailService : IEmailService
             From = new MailAddress(SMPTPInforFromConfig.FromEmail, SMPTPInforFromConfig.FromDisplayName),
             Subject = subject,
             IsBodyHtml = true,
-            Body = message
+            Body = message,
         };
         mailMessage.To.Add(new MailAddress(toEmail));
         var smtpClient = new SmtpClient()
