@@ -37,8 +37,12 @@ jobs:
                   Authentication.Google.ClientSecret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
                   Authentication.Google.MobileClientId: ${{ secrets.GOOGLE_MOBILE_CLIENTID }}
                   ConnectionStrings.DefaultConnection: ${{ secrets.DB_CONNECTION }}
+                  SMTP.Host: ${{ secrets.SMTP_HOST }}
+                  SMTP.Port: ${{ secrets.SMTP_PORT }}
                   SMTP.Username: ${{ secrets.SMTP_USERNAME }}
                   SMTP.Password: ${{ secrets.SMTP_PASSWORD }}
+                  SMTP.From: ${{ secrets.SMTP_FROM }}
+                  SMTP.DisplayName: ${{ secrets.SMTP_DISPLAYNAME }}
             - name: Setup .NET Core
               uses: actions/setup-dotnet@v1
               with:
