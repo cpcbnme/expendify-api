@@ -135,7 +135,7 @@ public class AuthController : ControllerBase
         var code = await _repo.UserService.GenerateUserConfirmationCode(user.Id);
         var emailBody = _emailTemplate.BuildEmailConfirmationTemplate(user.FirstName, code);
 
-        var mailSent = await _repo.EmailService.SendEmailAsync(user.Email, "Account Confirmation", emailBody);
+        var mailSent = await _repo.EmailService.SendEmailAsync(user.Email, "Confirmar registro", emailBody);
 
         if (mailSent != true)
         {
@@ -213,7 +213,7 @@ public class AuthController : ControllerBase
         }
 
         var mailBody = _emailTemplate.BuildPasswordResetConfirmationTemplate(userExists.FirstName);
-        var mailSent = await _repo.EmailService.SendEmailAsync(userExists.Email, "Password Change Confirmation", mailBody);
+        var mailSent = await _repo.EmailService.SendEmailAsync(userExists.Email, "Confirmación de cambio de contraseña", mailBody);
         if (mailSent != true)
         {
             return StatusCode(StatusCodes.Status200OK, new ApiResponse<string>()
@@ -259,7 +259,7 @@ public class AuthController : ControllerBase
 
         var code = await _repo.UserService.GenerateUserConfirmationCode(userExist.Id);
         var emailBody = _emailTemplate.BuildPasswordResetTemplate(userExist.FirstName, code);
-        var mailSent = await _repo.EmailService.SendEmailAsync(userExist.Email, "Password Reset", emailBody);
+        var mailSent = await _repo.EmailService.SendEmailAsync(userExist.Email, "Cambio de contraseña", emailBody);
         if (mailSent != true)
         {
             return StatusCode(StatusCodes.Status200OK, new ApiResponse<string>()
@@ -326,7 +326,7 @@ public class AuthController : ControllerBase
         });
 
         var mailBody = _emailTemplate.BuildPasswordResetConfirmationTemplate(userExist.FirstName);
-        var mailSent = await _repo.EmailService.SendEmailAsync(userExist.Email, "Password Reset Confirmation", mailBody);
+        var mailSent = await _repo.EmailService.SendEmailAsync(userExist.Email, "Cambiar contraseña", mailBody);
         if (mailSent != true)
         {
             return StatusCode(StatusCodes.Status200OK, new ApiResponse<string>()
@@ -373,7 +373,7 @@ public class AuthController : ControllerBase
 
         var code = await _repo.UserService.GenerateUserConfirmationCode(userExist.Id);
         var emailBody = _emailTemplate.BuildEmailConfirmationTemplate(userExist.FirstName, code);
-        var mailSent = await _repo.EmailService.SendEmailAsync(userExist.Email, "Email Confirmation", emailBody);
+        var mailSent = await _repo.EmailService.SendEmailAsync(userExist.Email, "E-mail confirmado", emailBody);
         if (mailSent != true)
         {
             return StatusCode(StatusCodes.Status200OK, new ApiResponse<string>()
