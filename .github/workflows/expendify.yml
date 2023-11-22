@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    branches:
+      - main
 env:
   AZURE_WEBAPP_NAME: expendify
   AZURE_WEBAPP_PACKAGE_PATH: FinancialApplication/publish
