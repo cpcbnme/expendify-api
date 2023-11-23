@@ -46,7 +46,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status400BadRequest,
             hasError = true,
-            message = "Invalid username or password",
+            message = "Nombre de usuario o contraseña invalida",
             data = null
         });
 
@@ -55,7 +55,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status400BadRequest,
             hasError = true,
-            message = "Invalid username or password",
+            message = "Nombre de usuario o contraseña invalida",
             data = null
         });
 
@@ -64,7 +64,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status400BadRequest,
             hasError = true,
-            message = "Email not confirmed",
+            message = "Correo electronico no verificado",
             data = null
         });
 
@@ -89,7 +89,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status400BadRequest,
             hasError = true,
-            message = "Invalid authentication request",
+            message = "Solicitud de autenticacion invalida",
             data = null
         });
 
@@ -99,7 +99,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status400BadRequest,
             hasError = true,
-            message = "User already exists",
+            message = "El usuario ya existe.",
             data = null
         });
 
@@ -154,7 +154,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status200OK,
             hasError = false,
-            message = "User created successfully",
+            message = "Usuario creado exitosamente",
             data = null
         });
     }
@@ -179,7 +179,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status400BadRequest,
             hasError = true,
-            message = "User doesn't exists",
+            message = "El nombre de usuario no existe",
             data = null
         });
 
@@ -187,7 +187,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status400BadRequest,
             hasError = true,
-            message = "Both passwords are the same",
+            message = "Tu nueva contraseña no puede ser igual a la anterior",
             data = null
         });
 
@@ -196,7 +196,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status400BadRequest,
             hasError = true,
-            message = "Invalid current password",
+            message = "La contraseña actual es incorrecta",
             data = null
         });
 
@@ -207,7 +207,7 @@ public class AuthController : ControllerBase
             {
                 statusCode = StatusCodes.Status400BadRequest,
                 hasError = true,
-                message = "Password change failed. Please check user details and try again",
+                message = "Cambio de contraseña fallido. Por favor verifique los detalles del usuario e intente nuevamente",
                 data = null
             });
         }
@@ -220,7 +220,7 @@ public class AuthController : ControllerBase
             {
                 statusCode = StatusCodes.Status400BadRequest,
                 hasError = true,
-                message = "Password changed successfully but email confirmation failed",
+                message = "Cambio de contraseña exitoso pero la confirmación por correo electrónico falló",
                 data = null
             });
         }
@@ -228,7 +228,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status200OK,
             hasError = false,
-            message = "Password changed successfully",
+            message = "Se ha cambiado la contraseña exitosamente",
             data = null
         });
     }
@@ -253,7 +253,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status200OK,
             hasError = false,
-            message = "Password reset code sent successfully",
+            message = "Se ha enviado el codigo de recuperacion a tu correo.",
             data = null
         });
 
@@ -266,7 +266,7 @@ public class AuthController : ControllerBase
             {
                 statusCode = StatusCodes.Status400BadRequest,
                 hasError = true,
-                message = "Password reset code sent successfully but email confirmation failed",
+                message = "Codigo de recuperacion enviado exitosamente pero la confirmación por correo electrónico falló",
                 data = null
             });
         }
@@ -275,7 +275,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status200OK,
             hasError = false,
-            message = "Password reset code sent successfully",
+            message = "Se ha enviado el codigo de recuperacion a tu correo.",
             data = null
         });
     }
@@ -299,7 +299,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status400BadRequest,
             hasError = true,
-            message = "User doesn't exists",
+            message = "El usuario no existe",
             data = null
         });
 
@@ -311,7 +311,7 @@ public class AuthController : ControllerBase
             {
                 statusCode = StatusCodes.Status400BadRequest,
                 hasError = true,
-                message = "Invalid Code",
+                message = "El codigo ingresado no es valido",
                 data = null
             });
         }
@@ -321,7 +321,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status400BadRequest,
             hasError = true,
-            message = "Password reset failed. Please check user details and try again",
+            message = "Hubo un error.",
             data = null
         });
 
@@ -342,7 +342,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status200OK,
             hasError = false,
-            message = "Password reset successfully",
+            message = "Se ha cambiado correctamente.",
             data = null
         });
     }
@@ -367,7 +367,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status400BadRequest,
             hasError = true,
-            message = "User doesn't exists",
+            message = "El nombre de usuario no existe",
             data = null
         });
 
@@ -380,7 +380,7 @@ public class AuthController : ControllerBase
             {
                 statusCode = StatusCodes.Status400BadRequest,
                 hasError = true,
-                message = "Email confirmation code sent successfully but email confirmation failed",
+                message = "El email se ha enviado exitosamente pero la confirmación por correo electrónico falló",
                 data = null
             });
         }
@@ -421,7 +421,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status400BadRequest,
             hasError = true,
-            message = "User doesn't exists",
+            message = "El usuario no existe.",
             data = null
         });
 
@@ -438,7 +438,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status200OK,
             hasError = false,
-            message = "Email Confirmed.",
+            message = "Correo electroniconfirmado.",
             data = null
         });
     }
@@ -471,7 +471,7 @@ public class AuthController : ControllerBase
         {
             statusCode = StatusCodes.Status400BadRequest,
             hasError = true,
-            message = "Expired Token Please Try Again Later",
+            message = "Token expirado. Por favor inicie sesión nuevamente",
             data = null
         });
 
