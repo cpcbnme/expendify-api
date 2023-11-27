@@ -1,6 +1,9 @@
 ﻿using System.Net.Mail;
 using System.Net;
 using Microsoft.AspNetCore.Http.Internal;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
+using System.Text;
 
 public class SMTPDetails
 {
@@ -41,28 +44,35 @@ public class SMTPMailService : IEmailService
     /// <param name="bcc"></param>
     public async Task<bool> SendEmailAsync(string toEmail, string subject, string message)
     {
-        var mailMessage = new MailMessage()
+        var HttpReq = new HttpClient();
+        // make POST to https://us-central1-pisces-main.cloudfunctions.net/email-notifiactions
+        // with a json containing email, subject and message
+        // make sure the Content-Type header is application/json
+
+        HttpReq.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        HttpReq.DefaultRequestHeaders.Add("User-Agent", "FinancialApplication");
+        HttpReq.DefaultRequestHeaders.Add("Accept", "application/json");
+
+        // recipient, subject, body
+        var data = new
         {
-            From = new MailAddress(SMPTPInforFromConfig.FromEmail, SMPTPInforFromConfig.FromDisplayName),
-            Subject = subject,
-            IsBodyHtml = true,
-            Body = message,
-        };
-        mailMessage.To.Add(new MailAddress(toEmail));
-        var smtpClient = new SmtpClient()
-        {
-            Port = SMPTPInforFromConfig.SMTPPort,
-            Host = SMPTPInforFromConfig.SMTPHost,
-            EnableSsl = SMPTPInforFromConfig.EnableSSL,
-            UseDefaultCredentials = SMPTPInforFromConfig.UseDefaultCredentials,
+            recipient = toEmail,
+            subject = subject,
+            body = message
         };
 
-        if (SMPTPInforFromConfig.UseDefaultCredentials == false)
+        var json = JsonConvert.SerializeObject(data);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await HttpReq.PostAsync("https://us-central1-pisces-main.cloudfunctions.net/email-notifiactions", content);
+        if (response.IsSuccessStatusCode)
         {
-            smtpClient.Credentials = new NetworkCredential(SMPTPInforFromConfig.Username, SMPTPInforFromConfig.Password);
+            return true;
         }
-        await smtpClient.SendMailAsync(mailMessage);
-        return true;
+        else
+        {
+            return false;
+        }
     }
 
     private SMTPDetails SMPTPInforFromConfig
